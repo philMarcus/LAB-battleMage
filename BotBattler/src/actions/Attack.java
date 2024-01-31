@@ -1,6 +1,8 @@
 package actions;
 
+import game.Opponent;
 import game.Resource;
+import game.Threat;
 
 public class Attack implements Action {
 	private int numHits;  //how many hits the attack will make
@@ -22,7 +24,7 @@ public class Attack implements Action {
 	}
 
 	@Override
-	public void resolve() {
+	public void resolve(Threat t, Opponent o) {
 		// TODO Auto-generated method stub
 
 	}

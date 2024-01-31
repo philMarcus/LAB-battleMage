@@ -1,5 +1,7 @@
 package actions;
+import game.Opponent;
 import game.Resource;
+import game.Threat;
 
 public interface Action {
 	
@@ -7,6 +9,6 @@ public interface Action {
 	//returns true is cost is payable and paid.
  public boolean payCost();
 	
- public void resolve();  
+ public void resolve(Threat t, Opponent o);  
 	
 }

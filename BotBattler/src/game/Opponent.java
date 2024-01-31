@@ -18,6 +18,14 @@ public class Opponent {
 		//randomize vulnerability
 	}
 	
+	public int getPhysicalVulnerablility() {
+		return vulnerability;
+	}
+	
+	public int getMagicalVulnerablility() {
+		return -1*vulnerability;
+	}
+	
 	
 	
 }
