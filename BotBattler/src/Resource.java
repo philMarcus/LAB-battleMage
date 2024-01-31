@@ -1,10 +1,18 @@
 
 public class Resource {
 
+	private final int maxValue;
 	private int value;
-	private String name;
+	private final String name;
 	
-	payCost(int cost){
+	public Resource(String n, int max) {
+		name = n;
+		maxValue = max;
+		value = max;
+	
+	}
+	
+	public void payCost(int cost){
 		value -= cost;
 	}
 	
