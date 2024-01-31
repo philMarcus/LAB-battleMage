@@ -1,5 +1,5 @@
 package actions;
-import Resource;
+import game.Resource;
 
 public class Block implements Action {
 

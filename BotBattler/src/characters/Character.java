@@ -1,7 +1,7 @@
 package characters;
-import Resource;
-import Threat;
 import actions.Action;
+import game.Resource;
+import game.Threat;
 
 public interface Character {
 
