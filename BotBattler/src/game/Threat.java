@@ -14,7 +14,7 @@ public class Threat {
 	//to a fraction equal to pct.
 	public void reduceThreat(int[] q, double pct) {
 		for (int i=0;i <q.length;i++) {
-			vals[q[i]] *= pct;
+			vals[q[i]] *= pct;  //not sure if this casts correctly into int
 		}
 	}
 	

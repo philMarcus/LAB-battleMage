@@ -9,7 +9,7 @@ public enum Direction {
 	private final int[] quadrants;
 	
 	Direction(int qa, int qb){
-		quadrants = new int[1];
+		quadrants = new int[2];
 		this.quadrants[0] = qa;
 		this.quadrants[1] = qb;
 	}
