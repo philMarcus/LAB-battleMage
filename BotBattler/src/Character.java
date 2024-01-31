@@ -1,14 +1,9 @@
 
 public interface Character {
 
-
 	
-	public Resource getHitPoints() {
-		return hitPoints;
-	}
+	public Resource getHitPoints();
 	
-	public Action takeTurn(Threat t) {
-		
-	}
+	public Action takeTurn(Threat t);
 	
 }
