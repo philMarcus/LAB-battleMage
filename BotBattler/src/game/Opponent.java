@@ -23,7 +23,9 @@ public class Opponent {
 		//randomize vulnerability
 	}
 	
+
 	public void takeDamage(int damage) {
+		//reduce hp by passed damage
 		hitPoints -= damage;
 	}
 	public boolean isAlive() {

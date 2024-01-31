@@ -18,13 +18,13 @@ public class Block implements Action {
 	}
 
 	@Override
-	// Block costs 1 of any resource with a value of 20 or less.
+	// Blocking costs 1 of any resource with a value of 20 or less.
 	public boolean payCost() {
 		// resource must be <=20 to use block
 		if (res.getValue() > 20)
 			return false;
 
-		return res.payCost(1);
+		return res.pay(1);
 	}
 
 	@Override
