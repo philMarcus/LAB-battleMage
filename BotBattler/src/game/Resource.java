@@ -9,9 +9,9 @@ public class Resource {
 	public Resource(String n, int max) {
 		name = n;
 		maxValue = max;
-		value = max;
-	
+		value = max;	
 	}
+	
 	//returns true if cost is paid, or false if value isn't enough to pay
 	public boolean payCost(int cost){
 		//can't pay if value < cost.
