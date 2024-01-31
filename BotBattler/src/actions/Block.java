@@ -3,11 +3,11 @@ import game.Resource;
 
 public class Block implements Action {
 
-	
+	private Resource r; //the resource used to pay the cost of the action
 	@Override
 	
 	//Block costs 1 of any resource with a value of 20 or less.
-	public boolean payCost(Resource r) {
+	public boolean payCost() {
 		// resource must be <=20 to use block
 		if (r.getValue() > 20) return false; 
 	
