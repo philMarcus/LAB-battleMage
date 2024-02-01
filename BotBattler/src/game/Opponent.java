@@ -1,6 +1,11 @@
 package game;
 
 //this class represents the opponent that the player character is fighting
+//the player's character class will probably want to use information
+//like the opponents hit points, level, and pysical/magical vulnerability when deciding
+//which action to choose.
+//
+//("implements Cloneable" is not important for the purposes of playing this game.)
 public class Opponent implements Cloneable {
 
 	private int hitPoints;
@@ -84,12 +89,15 @@ public class Opponent implements Cloneable {
 	}
 
 	@Override
-	//The clone method comes from the Object class and allows us to clone an Opponent
-	//We want to clone the opponent so that the character class has all the info about
-	//the real opponent, but can't directly change it. Don't worry about this method at all.
+	// The clone method comes from the Object class and allows us to clone an
+	// Opponent
+	// We want to clone the opponent so that the character class has all the info
+	// about
+	// the real opponent, but can't directly change it. Don't worry about this
+	// method at all.
 	protected Opponent clone() {
 		try {
-			return (Opponent)super.clone();
+			return (Opponent) super.clone();
 		} catch (CloneNotSupportedException e) {
 			return new Opponent();
 		}

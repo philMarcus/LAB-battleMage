@@ -6,6 +6,11 @@ package game;
 // 2: top left
 // 3: bottom left
 // 4. bottom right
+//
+//If the player's action doesn't block or reduce the threat, the player will take the total
+//damage from all quadrants.
+//
+//("implements Cloneable" is not important for the purposes of playing this game.)
 public class Threat implements Cloneable {
 
 	//array containing incoming damage for each quadrant

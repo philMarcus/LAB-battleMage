@@ -58,13 +58,26 @@ public class Battle {
 		if (totalResources > maxTotalResources) {
 			isOver = true;
 		}
-		
-		//Pay the cost. If it gets paid, do the action!
+
+		// Pay the cost. If it gets paid, do the action!
 		if (action.payCost())
 			action.resolve(currentThreat, opp);
 
+		// if the opponent is out of HP, player wins!
+		if (!opp.isAlive()) {
+			playerWon = true;
+			isOver = true;
+		}
+
 		// player takes damage equal to remaining threat
 		playerHP.pay(currentThreat.getTotalThreat());
+
+		// If the player is out of hit points, it's over!
+		if (playerHP.getValue() <= 0)
+			isOver = true;
+		
+		// The player and the opponent can both run out of hp on the same turn. In this
+		//case the player is considered to have won, but is also considered to be dead.
 
 	}
 
