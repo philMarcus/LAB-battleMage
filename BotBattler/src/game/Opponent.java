@@ -1,7 +1,7 @@
 package game;
 
 //this class represents the opponent that the player character is fighting
-public class Opponent {
+public class Opponent implements Cloneable {
 
 	private int hitPoints;
 	private final int maxHP = 100; // opponent's starting hit points (at level 1)
@@ -81,6 +81,12 @@ public class Opponent {
 
 		}
 		return s;
+	}
+	
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+
+	    return super.clone();
 	}
 
 }

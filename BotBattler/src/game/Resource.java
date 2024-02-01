@@ -60,4 +60,8 @@ public class Resource {
 		return s + "\n";
 	}
 
+	public boolean isUnspent() {
+		return unspent;
+	}
+
 }

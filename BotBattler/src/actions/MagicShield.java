@@ -40,4 +40,8 @@ public class MagicShield implements Action {
 
 	}
 
+	public Resource getResource() {
+		return res;
+	}
+
 }

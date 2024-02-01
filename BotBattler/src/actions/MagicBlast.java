@@ -27,4 +27,8 @@ public class MagicBlast implements Action {
 		o.takeDamage(damage + o.getMagicalVulnerablility());
 	}
 
+	public Resource getResource() {
+		return res;
+	}
+
 }

@@ -36,7 +36,7 @@ public class Attack implements Action {
 		return numHits;
 	}
 
-	public Resource getRes() {
+	public Resource getResource() {
 		return res;
 	}
 

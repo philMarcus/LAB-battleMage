@@ -1,6 +1,6 @@
 package game;
 
-public class Threat {
+public class Threat implements Cloneable {
 
 	//array containing incoming damage for each quadrant
 	private int[] vals;
@@ -53,6 +53,15 @@ public class Threat {
 	public int getQuadrantThreat(int q) {
 		return vals[q-1];
 	}
+	
+	//returns the total threat across all quadrants
+	public int getTotalThreat() {
+		int t=0;
+		for (int i=0; i<4;i++) {
+			t += vals[i];
+		}
+		return t;
+	}
 
 	//reduces the threat from the quadrants listed in the q array,
 	//to a fraction equal to pct.
@@ -74,5 +83,10 @@ public class Threat {
 
 		return s;
 	}
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
 
+	    return super.clone();
+	}
+	
 }
