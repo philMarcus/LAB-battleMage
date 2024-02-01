@@ -16,9 +16,13 @@ public class Attack implements Action {
 	}
 	
 	@Override
-	//Attacks cost 2^x, where x is the number of hits
+	//Attacks cost (3^n-2) of any resource, where n is the number of hits
+	//That's:
+	// cost 1 for 1 hit!
+	// cost 8 for 2 hits!!
+	// cost 25 for 3 hits!!!
 	public boolean payCost() {
-				return res.pay((int)Math.pow(2, numHits));
+		return res.pay((int) Math.pow(3, numHits)-2);
 	}
 
 	@Override

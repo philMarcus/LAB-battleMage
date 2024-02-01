@@ -14,8 +14,9 @@ public class Threat {
 	//to a fraction equal to pct.
 	public void reduceThreat(int[] q, double pct) {
 		//loop over the passed quadrants and multiply threat by the passed percentage
+		//(automatically truncating threat to an integer)
 		for (int i=0;i <q.length; i++) {
-			vals[q[i]-1] *= pct;  //??ensure this casts alright??
+			vals[q[i]-1] *= pct;  
 		}
 	}
 	

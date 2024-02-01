@@ -23,11 +23,11 @@ public class Opponent {
 		//randomize vulnerability
 	}
 	
-
 	public void takeDamage(int damage) {
-		//reduce hp by passed damage
+		//reduce opponent's hp by passed damage
 		hitPoints -= damage;
 	}
+	
 	public boolean isAlive() {
 		return (hitPoints > 0);
 	}
@@ -39,7 +39,6 @@ public class Opponent {
 	public int getMagicalVulnerablility() {
 		return -1*vulnerability;
 	}
-
 
 	public int getHitPoints() {
 		return hitPoints;
