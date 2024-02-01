@@ -6,13 +6,14 @@ import game.Threat;
 
 public class MagicBlast implements Action {
 	private Resource res; // the resource used to pay the cost of the action
-	
+
 	public MagicBlast(Resource r) {
 		res = r;
 	}
-	
+
 	@Override
 	//Magic Blasts costs 10 of any resource
+	// returns true if cost is payable and paid.
 	public boolean payCost() {
 		return res.pay(10);
 	}

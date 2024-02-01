@@ -18,6 +18,7 @@ public class Block implements Action {
 
 	@Override
 	// Blocking costs 1 of any resource with a value of 20 or less.
+	// returns true if cost is payable and paid.
 	public boolean payCost() {
 		// resource must be <=20 to use block
 		if (res.getValue() > 20)
@@ -40,14 +41,14 @@ enum Direction {
 	DOWN(3,4), //the bottom half is quadrants 3 & 4
 	LEFT(2,3), //the left half is quadrants 2 & 3
 	RIGHT(1,4); //the right half is quadrants 1 & 4
-	
+
 	private final int[] quadrants;
-	
+
 	Direction(int qa, int qb){
 		int[] q = {qa, qb};
 		this.quadrants = q;
 	}
-	
+
 	public int[] getQuadrants() {
 		return quadrants;
 	}

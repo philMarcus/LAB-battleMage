@@ -8,30 +8,30 @@ public class Opponent {
 	//a positive vulnerability will increase physical damage, but decrease magical damage
 	//a negative vulnerability will do the opposite.
 	private int vulnerability;
-	
+
 	//the level of the opponent: higher level will have bigger threat
 	// and/or more hit points
 	private int level;
-	
+
 	public void newTurn() {
 		//TODO
 		// create a new random Threat
 		//randomize vulnerability
 	}
-	
+
 	public void takeDamage(int damage) {
 		//reduce opponent's hp by passed damage
 		hitPoints -= damage;
 	}
-	
+
 	public boolean isAlive() {
 		return (hitPoints > 0);
 	}
-	
+
 	public int getPhysicalVulnerablility() {
 		return vulnerability;
 	}
-	
+
 	public int getMagicalVulnerablility() {
 		return -1*vulnerability;
 	}
@@ -43,7 +43,7 @@ public class Opponent {
 	public int getLevel() {
 		return level;
 	}
-	
-	
-	
+
+
+
 }

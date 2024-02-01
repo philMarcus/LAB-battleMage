@@ -21,6 +21,7 @@ public class MagicShield implements Action {
 	// power 2 costs 4
 	// power 3 costs 8
 	// power 4 costs 16
+	// returns true if cost is payable and paid.
 	public boolean payCost() {
 		return res.pay((int) Math.pow(2, power));
 	}
@@ -33,7 +34,7 @@ public class MagicShield implements Action {
 	// power 3 cuts threat to 12.5%
 	// power 4 cuts threat to 6.25%
 	public void resolve(Threat t, Opponent o) {
-		
+
 		int[] allQuadrants = {1,2,3,4}; //Magic Shield acts on threat from all quadrants
 		t.reduceThreat(allQuadrants ,Math.pow(0.5,power));
 

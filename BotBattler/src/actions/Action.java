@@ -1,7 +1,6 @@
 package actions;
 
 import game.Opponent;
-import game.Resource;
 import game.Threat;
 
 public interface Action {
