@@ -23,19 +23,25 @@ import game.Threat;
 //Everything else is up to you!
 public interface Character {
 
-	
-	//This method is where you declare which resource represents your character's hit Points
-	//This is the resource that will be reduced by unblocked threat
-	//When this resource runs out, your character loses.
+	// This method is where you declare which resource represents your character's
+	// hit Points
+	// This is the resource that will be reduced by unblocked threat
+	// When this resource runs out, your character loses.
 	public Resource getHitPointResource();
 
-	//This method is your character's desicion-making process. Using the passed information about the
-	//opponent and the current threat decide which action to take. 
-	//Construct and return your chosen action!
+	// This method is your character's decision-making process. Using the passed
+	// information about the
+	// opponent and the current threat decide which action to take.
+	// Construct and return your chosen action!
 	//
-	//Examine the Threat and Opponent classes to see which methods you can call
-	//Examine the action classes (Attack, Block, MagicBlast, MagicShield) to see how they work 
-	//and how to construct them
+	// Examine the Threat and Opponent classes to see which methods you can call
+	// Examine the action classes (Attack, Block, MagicBlast, MagicShield) to see
+	// how they work and how to construct them
+	//
+	// Remember, each action has a resource cost. You can initialize (in your
+	// constructor) as many different resources as you
+	// like, but the rule of the game is if you try to use resources that add up to
+	// more than 200 in total, your character will be disqualified!
 	public Action takeTurn(Threat threatInfo, Opponent oppInfo);
 
 }
