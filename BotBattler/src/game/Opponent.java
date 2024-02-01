@@ -39,6 +39,11 @@ public class Opponent {
 	public int getMagicalVulnerablility() {
 		return -1*vulnerability;
 	}
+
+
+	public int getHitPoints() {
+		return hitPoints;
+	}
 	
 	
 	
