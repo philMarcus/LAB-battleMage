@@ -82,11 +82,17 @@ public class Opponent implements Cloneable {
 		}
 		return s;
 	}
-	
-	@Override
-	protected Object clone() throws CloneNotSupportedException {
 
-	    return super.clone();
+	@Override
+	//The clone method comes from the Object class and allows us to clone an Opponent
+	//We want to clone the opponent so that the character class has all the info about
+	//the real opponent, but can't directly change it. Don't worry about this method at all.
+	protected Opponent clone() {
+		try {
+			return (Opponent)super.clone();
+		} catch (CloneNotSupportedException e) {
+			return new Opponent();
+		}
 	}
 
 }

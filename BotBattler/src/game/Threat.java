@@ -1,5 +1,11 @@
 package game;
 
+//This class represents the threat the player is facing this turn.
+//Threat is represented as incoming damage from the four different quadrants
+// 1: top right
+// 2: top left
+// 3: bottom left
+// 4. bottom right
 public class Threat implements Cloneable {
 
 	//array containing incoming damage for each quadrant
@@ -83,10 +89,16 @@ public class Threat implements Cloneable {
 
 		return s;
 	}
+	
 	@Override
-	protected Object clone() throws CloneNotSupportedException {
-
-	    return super.clone();
+	//The clone method comes from the Object class and allows us to clone a Threat
+	//We want to clone the threat so that the character class has all the info about
+	//the real threat, but can't directly change it. Don't worry about this method at all.
+	protected Threat clone() {
+	   try { return (Threat)super.clone();}
+	   catch(CloneNotSupportedException e) {
+		   return new Threat();
+	   }
 	}
 	
 }
