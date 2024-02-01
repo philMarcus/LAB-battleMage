@@ -29,19 +29,19 @@ public class Threat {
 			//choose a random quadrant
 			int q = rollDie(4);
 			//add spike threat to that quadrant
-			va
+			vals[q-1] += rollDice(baseThreat, spikeDice); 
 		}
 		
 	}
 	
 	//rolls an x-sided die
 	//returns a random int between 1 and sides
-	private int rollDie(int sides) {
+	public static int rollDie(int sides) {
 		return (int)(Math.random()*sides +1);
 	}
 	
 	//rolls any number of x-sided dice
-	private int rollDice(int sides, int num ) {
+	public static int rollDice(int sides, int num ) {
 		int sum = 0;
 		for(int i=0;i<num;i++) {
 			sum += rollDie(sides);
