@@ -40,7 +40,7 @@ public class Resource {
 	@Override
 	public String toString() {
 		String s = name;
-		s+=": " + value+ "\n";
+		s+=": " + value+ " ";
 
 		//display "resource bar", one full pip for every 10% remaining
 		double d = 10*value/maxValue;
@@ -48,6 +48,7 @@ public class Resource {
 		for (int i=0;i<showFull;i++) {
 			s+="@";
 		}
+		//"empty" pips, one for every 10% used
 		for (int i=10;i>showFull;i--) {
 			s+=".";
 		}

@@ -13,10 +13,14 @@ public class Opponent {
 	// and/or more hit points
 	private int level;
 
-	public void newTurn() {
-		//TODO
-		// create a new random Threat
-		//randomize vulnerability
+	public void newVulnerability(int x) {
+		//roll an x-sided die. Subtract 1 (so vulnerability can be zero).
+		vulnerability = Threat.rollDie(x)-1;
+		//should be made negative half the time.
+		//This is so there's equal chance of a physical or a magical vulnerability
+		if (Threat.rollDie(2)==2) {
+			vulnerability *= -1;
+		}
 	}
 
 	public void takeDamage(int damage) {
