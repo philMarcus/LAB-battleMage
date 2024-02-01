@@ -19,12 +19,12 @@ public class MagicBlast implements Action {
 	}
 
 	@Override
-	//Magic Blast blasts away a third of opponent's remaining hit points!
+	//Magic Blast blasts away a third of opponent's remaining hit points! (Plus or minus damage from magical vulnerability!)
 	public void resolve(Threat t, Opponent o) {
 		//use math.ceil to always round up the damage to the nearest integer
 		//if the opponent has 1 hp, magic blast should finish them off!
 		int damage = (int)Math.ceil(o.getHitPoints()/3);
-		o.takeDamage(damage);
+		o.takeDamage(damage + o.getMagicalVulnerablility());
 	}
 
 }

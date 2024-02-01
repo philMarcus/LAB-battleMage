@@ -28,10 +28,12 @@ public class Opponent {
 		return (hitPoints > 0);
 	}
 
+	//Physical attacks are increased by this amount. Watch out! If this is negative, physical damage will be reduced!
 	public int getPhysicalVulnerablility() {
 		return vulnerability;
 	}
 
+	//Magical blast damage is increased by this amount. Watch out! If this is negative, magical damage will be reduced!
 	public int getMagicalVulnerablility() {
 		return -1*vulnerability;
 	}
