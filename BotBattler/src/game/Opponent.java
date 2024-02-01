@@ -4,10 +4,7 @@ package game;
 public class Opponent {
 
 	private int hitPoints;
-	
-	//an array containing the incoming damage to each quadrant
-	private Threat currentThreat;
-	
+
 	//a positive vulnerability will increase physical damage, but decrease magical damage
 	//a negative vulnerability will do the opposite.
 	private int vulnerability;
@@ -19,7 +16,6 @@ public class Opponent {
 	public void newTurn() {
 		//TODO
 		// create a new random Threat
-		
 		//randomize vulnerability
 	}
 	
@@ -42,6 +38,10 @@ public class Opponent {
 
 	public int getHitPoints() {
 		return hitPoints;
+	}
+
+	public int getLevel() {
+		return level;
 	}
 	
 	
