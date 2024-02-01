@@ -73,12 +73,14 @@ public class Battle {
 		playerHP.pay(currentThreat.getTotalThreat());
 
 		// If the player is out of hit points, it's over!
+		// The player and the opponent can both run out of hp on the same turn. In this
+		//case the player is considered to have won, but is also considered to be dead.
 		if (playerHP.getValue() <= 0)
 			isOver = true;
 		
-		// The player and the opponent can both run out of hp on the same turn. In this
-		//case the player is considered to have won, but is also considered to be dead.
-
+		//generate a new random threat and vulnerability
+		currentThreat = new Threat();
+		opp.newVulnerability();
 	}
 
 }

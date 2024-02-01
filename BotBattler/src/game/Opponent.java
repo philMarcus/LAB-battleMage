@@ -2,15 +2,15 @@ package game;
 
 //this class represents the opponent that the player character is fighting
 //the player's character class will probably want to use information
-//like the opponents hit points, level, and pysical/magical vulnerability when deciding
+//like the opponents hit points, level, and physical/magical vulnerability when deciding
 //which action to choose.
 //
 //("implements Cloneable" is not important for the purposes of playing this game.)
 public class Opponent implements Cloneable {
 
 	private int hitPoints;
-	private final int maxHP = 100; // opponent's starting hit points (at level 1)
-	private final int maxV = 4; // sets numerical range of opponent's vulnerabilities
+	private int maxHP = 100; // opponent's starting hit points (at level 1)
+	private int maxV = 4; // sets numerical range of opponent's vulnerabilities
 
 	// a positive vulnerability will increase physical damage, but decrease magical
 	// damage
@@ -25,12 +25,12 @@ public class Opponent implements Cloneable {
 	public Opponent() {
 		level = 1;
 		hitPoints = maxHP;
-		newVulnerability(maxV);
+		newVulnerability();
 	}
 
-	public void newVulnerability(int x) {
+	public void newVulnerability() {
 		// roll an x-sided die. Subtract 1 (so vulnerability can be zero).
-		vulnerability = Threat.rollDie(x) - 1;
+		vulnerability = Threat.rollDie(maxV) - 1;
 
 		// Vulnerability should be made negative half the time.
 		// This is so there's equal chance of a physical or a magical vulnerability
@@ -38,7 +38,8 @@ public class Opponent implements Cloneable {
 			vulnerability *= -1;
 		}
 	}
-
+	
+	//this method reduces the opponent's hitpoints by damage amount
 	public void takeDamage(int damage) {
 		// reduce opponent's hp by passed damage
 		hitPoints -= damage;
@@ -66,6 +67,14 @@ public class Opponent implements Cloneable {
 
 	public int getLevel() {
 		return level;
+	}
+
+	public int getMaxHP() {
+		return maxHP;
+	}
+
+	public int getMaxV() {
+		return maxV;
 	}
 
 	public String toString() {

@@ -2,8 +2,8 @@ package game;
 
 //This class represents a spendable resource in the game. All characters must select
 //one resource as their hitPoints. In your character class, other resources may 
-//be declared, initialized, and used to pay for actions. Remember, the rule of the game is
-//the maxValue of all your resources can't be greater than 200 total!
+//be declared, initialized, and used to pay for actions. But, the rule of the game is
+//the total maxValue of all your resources can't be greater than 200!
 public class Resource {
 
 	private final int maxValue; //starting value of the resource

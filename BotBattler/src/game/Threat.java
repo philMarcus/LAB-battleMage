@@ -19,7 +19,7 @@ public class Threat implements Cloneable {
 	//The number of sides on the die to roll to determine the base threat in each quadrant
 	private final int baseThreat = 10;
 	
-	//Every x turns, one quadrant will have extra threat!
+	//Every x turns, one quadrant will have extra "spike" threat!
 	private final int spikeFrequency = 4; 
 	
 	//When there's "spike" threat, this is how many extra dice to roll
