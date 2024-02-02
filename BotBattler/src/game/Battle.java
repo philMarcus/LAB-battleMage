@@ -112,7 +112,7 @@ public class Battle {
 			turn++;
 			String s = playTurn();
 			if(print) System.out.println(s);
-			if(dramaticPause) input.next();
+			if(dramaticPause) input.nextLine();
 		}
 		
 		return playerWin;
