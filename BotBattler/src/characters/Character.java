@@ -22,6 +22,9 @@ import game.Threat;
 //
 //Everything else is up to you!
 public interface Character {
+	
+	//This method just returns your charcter's name
+	public String getName();
 
 	// This method is where you declare which resource represents your character's
 	// hit Points

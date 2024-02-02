@@ -30,7 +30,7 @@ public class Battle {
 	private boolean isOver = false;
 
 	// true if the player has won the battle;
-	private boolean playerWon = false;
+	private boolean playerWin = false;
 
 	public Battle(Character p) {
 		player = p;
@@ -41,7 +41,10 @@ public class Battle {
 		turn = 1;
 	}
 
-	public void playTurn() {
+	//executes a turn of the game. Returns a string containing the results of the turn.
+	public String playTurn() {
+		String turnLog = "Turn "+turn+" results:\n"+player.getName()+" "; //stores a description of the turn
+		
 		// get the player's choice of action.
 		// pass clones of the Threat and Opponent objects, so the player class can't
 		// directly change the threat or remove hitpoints from the opponent
@@ -57,30 +60,59 @@ public class Battle {
 		// check for too many resources, and disqualify if need be
 		if (totalResources > maxTotalResources) {
 			isOver = true;
+			return turnLog + "is disqualified for having too many reources. Lose.\n";
 		}
 
-		// Pay the cost. If it gets paid, do the action!
-		if (action.payCost())
+		// Pay the cost. If it gets paid, do the action! (and update the log)
+		if (action.payCost()) {
 			action.resolve(currentThreat, opp);
+			turnLog += action.toString();
+		}
+		else
+			turnLog += "does nothing. Can't afford the "+res.getName()+".\n";
 
 		// if the opponent is out of HP, player wins!
 		if (!opp.isAlive()) {
-			playerWon = true;
+			playerWin = true;
 			isOver = true;
+			return turnLog += "The opponent has been defeated! Win.\n";
 		}
 
 		// player takes damage equal to remaining threat
 		playerHP.pay(currentThreat.getTotalThreat());
+		turnLog += player.getName()+" takes "+currentThreat.getTotalThreat()+" damage.\n";
 
 		// If the player is out of hit points, it's over!
-		// The player and the opponent can both run out of hp on the same turn. In this
-		//case the player is considered to have won, but is also considered to be dead.
-		if (playerHP.getValue() <= 0)
+
+		if (playerHP.getValue() <= 0) {
 			isOver = true;
-		
+			turnLog += player.getName()+" dies. Lose.\n";
+		}
 		//generate a new random threat and vulnerability
 		currentThreat = new Threat();
 		opp.newVulnerability();
+		
+		return turnLog;
+	}
+
+	public Character getPlayer() {
+		return player;
+	}
+
+	public Threat getCurrentThreat() {
+		return currentThreat;
+	}
+
+	public int getTurn() {
+		return turn;
+	}
+
+	public boolean isOver() {
+		return isOver;
+	}
+
+	public boolean isPlayerWin() {
+		return playerWin;
 	}
 
 }
