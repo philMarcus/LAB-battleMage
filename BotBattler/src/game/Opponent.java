@@ -4,8 +4,6 @@ package game;
 //the player's character class will probably want to use information
 //like the opponents hit points, level, and physical/magical vulnerability when deciding
 //which action to choose.
-//
-//("implements Cloneable" is not important for the purposes of playing this game.)
 public class Opponent implements Cloneable {
 
 	private int hitPoints;

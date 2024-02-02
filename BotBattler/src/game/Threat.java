@@ -9,8 +9,6 @@ package game;
 //
 //If the player's action doesn't block or reduce the threat, the player will take the total
 //damage from all quadrants.
-//
-//("implements Cloneable" is not important for the purposes of playing this game.)
 public class Threat implements Cloneable {
 
 	//array containing incoming damage for each quadrant
@@ -76,16 +74,12 @@ public class Threat implements Cloneable {
 
 	//reduces the threat from the quadrants listed in the q array,
 	//to a fraction equal to pct.
-	//Returns how much threat was removed
-	public int reduceThreat(int[] q, double pct) {
-		int initialThreat = getTotalThreat();
-		
+	public void reduceThreat(int[] q, double pct) {
 		//loop over the passed quadrants and multiply threat by the passed percentage
 		//(automatically truncating threat to an integer)
 		for (int i=0;i <q.length; i++) {
 			vals[q[i]-1] *= pct;
 		}
-		return initialThreat - getTotalThreat(); //the amount removed is the initial threat minus the current threat
 	}
 
 	@Override

@@ -1,5 +1,7 @@
 package game;
 
+import java.util.Scanner;
+
 import actions.Action;
 import characters.Character;
 
@@ -31,6 +33,8 @@ public class Battle {
 
 	// true if the player has won the battle;
 	private boolean playerWin = false;
+	
+    private Scanner input = new Scanner(System.in);
 
 	public Battle(Character p) {
 		player = p;
@@ -38,10 +42,10 @@ public class Battle {
 		currentThreat = new Threat();
 		playerHP = player.getHitPointResource();
 		totalResources = playerHP.getMaxValue();
-		turn = 1;
+		turn = 0;
 	}
 
-	//executes a turn of the game. Returns a string containing the results of the turn.
+	//executes a turn of the battle. Returns a string containing the results of the turn.
 	public String playTurn() {
 		String turnLog = "Turn "+turn+" results:\n"+player.getName()+" "; //stores a description of the turn
 		
@@ -50,8 +54,8 @@ public class Battle {
 		// directly change the threat or remove hitpoints from the opponent
 		Action action = player.takeTurn(currentThreat.clone(), opp.clone());
 
-		// before we pay the action's cost and resolve the action check:
-		// if we haven't spent this resource before, and it's not the player's HP,
+		// before we pay the action's cost and resolve the action, check:
+		// if we haven't spent this resource before, (and it's not the player's HP),
 		// add the maxValue to total resources. This is so we can check that the player
 		// isn't cheating by using too many resources.
 		Resource res = action.getResource();
@@ -83,7 +87,6 @@ public class Battle {
 		turnLog += player.getName()+" takes "+currentThreat.getTotalThreat()+" damage.\n";
 
 		// If the player is out of hit points, it's over!
-
 		if (playerHP.getValue() <= 0) {
 			isOver = true;
 			turnLog += player.getName()+" dies. Lose.\n";
@@ -93,6 +96,22 @@ public class Battle {
 		opp.newVulnerability();
 		
 		return turnLog;
+	}
+	
+	//runs a battle. Loops over playTurn until the battle is over.
+	//will print a log to the console if print is true
+	//will wait for user to hit Enter between turns if dramaticPause is true.
+	//returns true for player victory, false for a loss
+	public boolean doBattle(boolean print, boolean dramaticPause) {
+		
+		while(!isOver) {
+			turn++;
+			String s = playTurn();
+			if(print) System.out.println(s);
+			if(dramaticPause) input.next();
+		}
+		
+		return playerWin;
 	}
 
 	public Character getPlayer() {
