@@ -8,6 +8,8 @@ public class MagicShield implements Action {
 
 	private Resource res;// The resource used to pay for the attack
 	private int power; // how many times the shield removes half of remaining threat
+	private int reduced; //the amount of threat this shield blocked
+	private int cost; //the resource cost of this shield
 
 	public MagicShield(int pow, Resource r) {
 		power = pow;
@@ -23,7 +25,8 @@ public class MagicShield implements Action {
 	// power 4 costs 16
 	// returns true if cost is payable and paid.
 	public boolean payCost() {
-		return res.pay((int) Math.pow(2, power));
+		cost = (int) Math.pow(2, power);
+		return res.pay(cost);
 	}
 
 	@Override
@@ -33,15 +36,21 @@ public class MagicShield implements Action {
 	// power 2 cuts threat to 25%
 	// power 3 cuts threat to 12.5%
 	// power 4 cuts threat to 6.25%
+	//
+	// "reduced" variable is set to the amount of damage the shield blocked
 	public void resolve(Threat t, Opponent o) {
 
 		int[] allQuadrants = {1,2,3,4}; //Magic Shield acts on threat from all quadrants
-		t.reduceThreat(allQuadrants ,Math.pow(0.5,power));
+		reduced = t.reduceThreat(allQuadrants ,Math.pow(0.5,power));
 
 	}
 
 	public Resource getResource() {
 		return res;
+	}
+	
+	public String toString() {
+		return "casts a level "+power+" Magic Shield, reducing threat by "+reduced+", at a cost of "+cost+" "+res.getName()+".\n";
 	}
 
 }

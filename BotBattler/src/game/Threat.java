@@ -76,12 +76,16 @@ public class Threat implements Cloneable {
 
 	//reduces the threat from the quadrants listed in the q array,
 	//to a fraction equal to pct.
-	public void reduceThreat(int[] q, double pct) {
+	//Returns how much threat was removed
+	public int reduceThreat(int[] q, double pct) {
+		int initialThreat = getTotalThreat();
+		
 		//loop over the passed quadrants and multiply threat by the passed percentage
 		//(automatically truncating threat to an integer)
 		for (int i=0;i <q.length; i++) {
 			vals[q[i]-1] *= pct;
 		}
+		return initialThreat - getTotalThreat(); //the amount removed is the initial threat minus the current threat
 	}
 
 	@Override

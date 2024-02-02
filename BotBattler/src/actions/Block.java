@@ -8,6 +8,7 @@ public class Block implements Action {
 
 	private Direction direction;
 	private Resource res; // the resource used to pay the cost of the action
+	private int reduced; //the amount of threat this block blocked
 
 	// Creates a Block action in the UP, DOWN, LEFT, or RIGHT direction, spending
 	// Resource r
@@ -29,32 +30,43 @@ public class Block implements Action {
 
 	@Override
 	// Block removes all threat from either top, bottom, left, or right half
+	// "reduced" variable is set to the amount of damage the block blocked
 	public void resolve(Threat t, Opponent o) {
-		t.reduceThreat(direction.getQuadrants(), 0.0);
+		reduced = t.reduceThreat(direction.getQuadrants(), 0.0);
 	}
 
 	public Resource getResource() {
 		return res;
+	}
+	
+	public String toString() {
+		return "blocks "+direction.toString()+", reducing total threat by "+reduced+".\n";
 	}
 
 }
 
 //this type defines the blocking directions and which quadrants they cover.
 enum Direction {
-	UP(1, 2), // the top half is quadrants 1 & 2
-	DOWN(3, 4), // the bottom half is quadrants 3 & 4
-	LEFT(2, 3), // the left half is quadrants 2 & 3
-	RIGHT(1, 4); // the right half is quadrants 1 & 4
+	UP(1, 2, "high"), // the top half is quadrants 1 & 2
+	DOWN(3, 4, "low"), // the bottom half is quadrants 3 & 4
+	LEFT(2, 3,"to the left"), // the left half is quadrants 2 & 3
+	RIGHT(1, 4,"to the right"); // the right half is quadrants 1 & 4
 
 	private final int[] quadrants;
+	private final String s; //this holds the string description of the direction
 
-	Direction(int qa, int qb) {
+	Direction(int qa, int qb, String adj) {
 		int[] q = { qa, qb };
 		this.quadrants = q;
+		this.s=adj;
 	}
 
 	public int[] getQuadrants() {
 		return quadrants;
+	}
+	
+	public String toString() {
+		return s;
 	}
 
 }

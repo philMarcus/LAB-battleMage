@@ -9,6 +9,8 @@ public class Attack implements Action {
 	private Resource res; //The resource used to pay for the attack
 
 	private int damage=10;	//attacks do 10 base damage
+	
+	private int cost; //the resource cost of performing the attack
 
 	public Attack(int n, Resource r) {
 		numHits = n;
@@ -23,13 +25,15 @@ public class Attack implements Action {
 	// cost 25 for 3 hits!!!
 	// returns true if cost is payable and paid.
 	public boolean payCost() {
-		return res.pay((int) Math.pow(3, numHits)-2);
+		cost  = (int) Math.pow(3, numHits)-2;
+		return res.pay(cost);
 	}
 
 	@Override
 	//each hit in an attack damages for 10 plus the opponent's physical vulnerability
 	public void resolve(Threat t, Opponent o) {
-		o.takeDamage(numHits*(damage + o.getPhysicalVulnerablility()));
+		damage = numHits*(damage + o.getPhysicalVulnerablility());
+		o.takeDamage(damage);
 	}
 
 	public int getNumHits() {
@@ -42,6 +46,10 @@ public class Attack implements Action {
 
 	public int getDamage() {
 		return damage;
+	}
+	
+	public String toString() {
+		return "hits for "+damage+" damage, at a cost of "+cost+" "+res.getName()+".\n";
 	}
 
 }
