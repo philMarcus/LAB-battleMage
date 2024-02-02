@@ -86,9 +86,13 @@ public class Battle {
 			return turnLog += "The opponent has been defeated! Win.\n";
 		}
 
-		// player takes damage equal to remaining threat
-		playerHP.pay(currentThreat.getTotalThreat());
-		turnLog += player.getName()+" takes "+currentThreat.getTotalThreat()+" damage.\n";
+		// player takes damage equal to remaining threat, 
+		//or, if not enough hp, takes damage equal to all remaining hp
+		int dmg = Math.min(currentThreat.getTotalThreat(),playerHP.getValue());
+		playerHP.pay(dmg);
+
+		turnLog += player.getName()+" takes "+dmg+" damage.\n";
+		turnLog += playerHP.toString();
 
 		// If the player is out of hit points, it's over!
 		if (playerHP.getValue() <= 0) {
@@ -109,7 +113,9 @@ public class Battle {
 	public boolean doBattle(boolean print, boolean dramaticPause) {
 		
 		while(!isOver) {
+			//increase turn count
 			turn++;
+			//play the turn. store the log in string s.
 			String s = playTurn();
 			if(print) System.out.println(s);
 			if(dramaticPause) input.nextLine();

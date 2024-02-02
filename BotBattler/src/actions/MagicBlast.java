@@ -34,7 +34,7 @@ public class MagicBlast implements Action {
 	}
 	
 	public String toString() {
-		return "casts Magic Blast for "+damage+" damage, at a cost of "+cost+" "+res.getName()+".\n";
+		return "casts Magic Blast for "+damage+" damage, at a cost of "+cost+". "+res.toString();
 	}
 
 }

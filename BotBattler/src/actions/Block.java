@@ -8,7 +8,7 @@ public class Block implements Action {
 
 	private Direction direction;
 	private Resource res; // the resource used to pay the cost of the action
-	private int reduced; //the amount of threat this block blocked
+	private int reduced; // the amount of threat this block blocked
 
 	// Creates a Block action in the UP, DOWN, LEFT, or RIGHT direction, spending
 	// Resource r
@@ -38,14 +38,9 @@ public class Block implements Action {
 	public Resource getResource() {
 		return res;
 	}
-	
+
 	public String toString() {
-		return "blocks "+direction.toString()+", reducing total threat by "+reduced+".\n";
+		return "blocks " + direction.toString() + ", reducing total threat by " + reduced + ". " + res.toString();
 	}
 
 }
-
-
-
-
-

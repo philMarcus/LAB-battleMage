@@ -90,11 +90,12 @@ public class Threat implements Cloneable {
 
 	@Override
 	public String toString() {
-		String s = "THREAT:\n";
-		s += "==============================\n";
+		String s = "THREAT "+getTotalThreat()+":\n";
+		s += "==============\n";
 		s += "||  "+ vals[1] +" || "+ vals[0] +"  ||\n";
+		s += "==============\n";
 		s += "||  "+ vals[2] +" || "+ vals[3] +"  ||\n";
-		s += "==============================\n";
+		s += "==============\n";
 
 		return s;
 	}

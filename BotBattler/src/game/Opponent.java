@@ -81,7 +81,7 @@ public class Opponent implements Cloneable {
 			s += "Opponent has no specific vulnerability right now.\n";
 		} else {
 			s += "Opponent is ";
-			for (int i = vulnerability; i > 1; i--) {
+			for (int i = Math.abs(vulnerability); i > 1; i--) {
 				s += "really ";
 			}
 			s += "vulnerable to ";

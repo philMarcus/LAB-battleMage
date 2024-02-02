@@ -49,7 +49,7 @@ public class Attack implements Action {
 	}
 	
 	public String toString() {
-		return "hits for "+damage+" damage, at a cost of "+cost+" "+res.getName()+".\n";
+		return "hits for "+damage+" damage, at a cost of "+cost+". "+res.toString();
 	}
 
 }
