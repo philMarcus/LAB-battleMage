@@ -47,7 +47,11 @@ public class Battle {
 
 	//executes a turn of the battle. Returns a string containing the results of the turn.
 	public String playTurn() {
-		String turnLog = "Turn "+turn+" results:\n"+player.getName()+" "; //stores a description of the turn
+		//turnLog stores a description of the turn
+		String turnLog = "Turn "+turn+" results:\n";
+		turnLog += currentThreat.toString();
+		turnLog += opp.toString();
+		turnLog+=player.getName()+" "; 
 		
 		// get the player's choice of action.
 		// pass clones of the Threat and Opponent objects, so the player class can't
