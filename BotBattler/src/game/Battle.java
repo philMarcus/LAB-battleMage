@@ -44,7 +44,6 @@ public class Battle {
 		currentThreat = new Threat();
 		playerHP = player.getHitPointResource();
 		totalResources = playerHP.getMaxValue();
-
 		
 		//A new battle will reset the Magic Blast counter.
 		MagicBlast.resetUses();
@@ -66,7 +65,7 @@ public class Battle {
 
 		// before we pay the action's cost and resolve the action, cheater check:
 		// if we haven't spent this resource before, (and it's not the player's HP),
-		// add the maxValue to total resources. This is so we can check that the player
+		// add it's maxValue to total resources. This is so we can check that the player
 		// isn't cheating by using too many resources.
 		Resource res = action.getResource();
 		if (res.isUnspent() && !res.equals(playerHP))

@@ -17,7 +17,7 @@ public class MagicBlast implements Action {
 
 	@Override
 	//Your first Magic Blast costs 10 of any resource.
-	//They get 1 cheaper after each use!!
+	//They get 1 cheaper after each use!!!!
 	//
 	// returns true if cost is payable and paid.
 	public boolean payCost() {
