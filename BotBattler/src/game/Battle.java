@@ -3,6 +3,7 @@ package game;
 import java.util.Scanner;
 
 import actions.Action;
+import actions.MagicBlast;
 import characters.Character;
 
 public class Battle {
@@ -43,7 +44,10 @@ public class Battle {
 		currentThreat = new Threat();
 		playerHP = player.getHitPointResource();
 		totalResources = playerHP.getMaxValue();
-		turn = 0;
+
+		
+		//A new battle will reset the Magic Blast counter.
+		MagicBlast.resetUses();
 	}
 
 	//executes a turn of the battle. Returns a string containing the results of the turn.
