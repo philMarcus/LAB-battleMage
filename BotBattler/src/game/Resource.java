@@ -10,6 +10,7 @@ public class Resource {
 	private int value; //current value of the resource
 	private final String name; //name of the resource
 	private boolean unspent; // whether this resource has yet to be spent
+	public String fullPip = "O";
 
 	public Resource(String n, int max) {
 		name = n;
@@ -49,12 +50,12 @@ public class Resource {
 
 		// display "resource bar", one full pip for every 10% remaining
 		double d = 10 * value / maxValue;
-		int showFull = (int) d;
-		for (int i = 0; i < showFull; i++) {
-			s += "@";
+		int pips = (int) d;
+		for (int i = 0; i < pips; i++) {
+			s += fullPip;
 		}
 		// "empty" pips, one for every 10% used
-		for (int i = 10; i > showFull; i--) {
+		for (int i = 10; i > pips; i--) {
 			s += ".";
 		}
 		return s + "\n";

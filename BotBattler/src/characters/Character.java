@@ -21,17 +21,10 @@ import game.Threat;
 //as written here.
 //
 //Everything else is up to you!
+//
+//by Marcus
 public interface Character {
 	
-	//This method just returns your charcter's name
-	public String getName();
-
-	// This method is where you declare which resource represents your character's
-	// hit Points
-	// This is the resource that will be reduced by unblocked threat
-	// When this resource runs out, your character loses.
-	public Resource getHitPointResource();
-
 	// This method is your character's decision-making process. Using the passed
 	// information about the
 	// opponent and the current threat decide which action to take.
@@ -46,5 +39,14 @@ public interface Character {
 	// like, but the rule of the game is if you try to use resources that add up to
 	// more than 200 in total, your character will be disqualified!
 	public Action takeTurn(Threat threatInfo, Opponent oppInfo);
+	
+	// This method is where you declare which resource represents your character's
+	// hit Points
+	// This is the resource that will be reduced by unblocked threat
+	// When this resource runs out, your character loses.
+	public Resource getHitPointResource();
+	
+	//This method just returns your charcter's name
+	public String toString();
 
 }

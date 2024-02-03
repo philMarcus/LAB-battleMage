@@ -1,5 +1,6 @@
 package game;
 
+import characters.DumbFighter;
 import characters.TestFighter;
 
 //The game of battleMage is played by writing a Java class to
@@ -28,13 +29,15 @@ public class BattleTester {
 
 	public static void main(String[] args) {
 
-		// create a player of the Test Fighter class
+		// create a player of the DumbFighter class
 		//******************!!!************************
-		//Replace TestFighter with your class to play!!!
+		//Replace DumbFighter with your class to play!!!
 		//******************!!!************************
-		TestFighter player = new TestFighter();
+		DumbFighter player = new DumbFighter();
+		
 		// create a new battle object feat. player
 		Battle battle = new Battle(player);
+		
 		// do the battle, printing turn logs, and waiting for the user to hit Enter
 		// between turns
 		battle.doBattle(true, true);

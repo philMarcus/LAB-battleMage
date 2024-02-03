@@ -50,8 +50,8 @@ public class Battle {
 		//turnLog stores a description of the turn
 		String turnLog = "Turn "+turn+" results:\n";
 		turnLog += currentThreat.toString();
-		turnLog += opp.toString();
-		turnLog+=player.getName()+" "; 
+		turnLog += opp.toString()+"\n";
+		turnLog+=player.toString()+" "; 
 		
 		// get the player's choice of action.
 		// pass clones of the Threat and Opponent objects, so the player class can't
@@ -91,13 +91,13 @@ public class Battle {
 		int dmg = Math.min(currentThreat.getTotalThreat(),playerHP.getValue());
 		playerHP.pay(dmg);
 
-		turnLog += player.getName()+" takes "+dmg+" damage.\n";
+		turnLog += player.toString()+" takes "+dmg+" damage. ";
 		turnLog += playerHP.toString();
 
 		// If the player is out of hit points, it's over!
 		if (playerHP.getValue() <= 0) {
 			isOver = true;
-			turnLog += player.getName()+" dies. Lose.\n";
+			turnLog += player.toString()+" dies. Lose.\n";
 		}
 		//generate a new random threat and vulnerability
 		currentThreat = new Threat();
