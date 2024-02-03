@@ -34,6 +34,7 @@ public class Battle {
 	// true if the player has won the battle;
 	private boolean playerWin = false;
 	
+	//input from the user, only used to press Enter between turns.
     private Scanner input = new Scanner(System.in);
 
 	public Battle(Character p) {
@@ -54,11 +55,12 @@ public class Battle {
 		turnLog+=player.toString()+" "; 
 		
 		// get the player's choice of action.
-		// pass clones of the Threat and Opponent objects, so the player class can't
+		//this is when your decision-making method (it actually is AI) gets called.
+		// pass clones of the Threat and Opponent objects, so the player's class can't
 		// directly change the threat or remove hitpoints from the opponent
 		Action action = player.takeTurn(currentThreat.clone(), opp.clone());
 
-		// before we pay the action's cost and resolve the action, check:
+		// before we pay the action's cost and resolve the action, cheater check:
 		// if we haven't spent this resource before, (and it's not the player's HP),
 		// add the maxValue to total resources. This is so we can check that the player
 		// isn't cheating by using too many resources.

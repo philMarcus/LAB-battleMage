@@ -10,7 +10,7 @@ package game;
 //If the player's action doesn't block or reduce the threat, the player will take the total
 //damage from all quadrants.
 //
-//("implements Cloneable" is not important for the purposes of playing this game.)
+//"implements Cloneable" helps prevent cheating. 
 public class Threat implements Cloneable {
 
 	// array containing incoming damage for each quadrant
@@ -104,7 +104,7 @@ public class Threat implements Cloneable {
 
 	@Override
 	// The clone method comes from the Object class and allows us to clone a Threat
-	// We want to clone the threat so that the character class has all the info
+	// We want to clone the threat so that the player's class has all the info
 	// about
 	// the real threat, but can't directly change it. Don't worry about this method
 	// at all.

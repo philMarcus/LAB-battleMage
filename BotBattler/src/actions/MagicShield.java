@@ -8,7 +8,7 @@ public class MagicShield implements Action {
 
 	private Resource res;// The resource used to pay for the attack
 	private int power; // how many times the shield removes half of remaining threat
-	private int reduced; // the amount of threat this shield blocked
+	private int reducedDmg; // the amount of threat this shield actually blocked
 	private int cost; // the resource cost of this shield
 
 	public MagicShield(int pow, Resource r) {
@@ -39,11 +39,11 @@ public class MagicShield implements Action {
 	// power 3 cuts threat to 12.5%
 	// power 4 cuts threat to 6.25%
 	//
-	// "reduced" variable is set to the amount of damage the shield blocked
+	// "reducedDmg" attribute is set to the amount of damage the shield blocked
 	public void resolve(Threat t, Opponent o) {
 
 		int[] allQuadrants = { 1, 2, 3, 4 }; // Magic Shield acts on threat from all quadrants
-		reduced = t.reduceThreat(allQuadrants, Math.pow(0.5, power));
+		reducedDmg = t.reduceThreat(allQuadrants, Math.pow(0.5, power));
 
 	}
 
@@ -52,7 +52,7 @@ public class MagicShield implements Action {
 	}
 
 	public String toString() {
-		return "casts a level " + power + " Magic Shield, reducing threat by " + reduced + ", at a cost of " + cost
+		return "casts a level " + power + " Magic Shield, reducing threat by " + reducedDmg + ", at a cost of " + cost
 				+ ". " + res.toString();
 	}
 

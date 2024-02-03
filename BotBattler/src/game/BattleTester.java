@@ -1,9 +1,10 @@
 package game;
 
 import characters.DumbFighter;
+import characters.GoodBlockerFighter;
 import characters.TestFighter;
 
-//The game of battleMage is played by writing a Java class to
+// The game of battleMage is played by writing a Java class to
 //implement the Character interface and then constructing an
 //instance of your character in the arena to see how many increasingly
 //tough opponents it can survive.
@@ -12,10 +13,10 @@ import characters.TestFighter;
 //
 //WHO WILL WRITE THE STRONGEST BATTLEMAGE?!?!?
 //
-//To implement this interface, make sure of two things:
+//To implement the interface, just make sure of two things:
 //
 //1) your class header has "implements Character"
-//e.g. "public class YourClass implements Character{..."
+//for example,  "public class YourClass implements Character {..."
 //and
 //2) Your class must contain the methods listed below, using the signatures exactly
 //as written here.
@@ -30,14 +31,14 @@ public class BattleTester {
 	public static void main(String[] args) {
 
 		// create a player of the DumbFighter class
-		//******************!!!************************
-		//Replace DumbFighter with your class to play!!!
-		//******************!!!************************
-		DumbFighter player = new DumbFighter();
-		
+		// ******************!!!************************
+		// Replace DumbFighter with your class to play!!!
+		// ******************!!!************************
+		GoodBlockerFighter player = new GoodBlockerFighter();
+
 		// create a new battle object feat. player
 		Battle battle = new Battle(player);
-		
+
 		// do the battle, printing turn logs, and waiting for the user to hit Enter
 		// between turns
 		battle.doBattle(true, true);

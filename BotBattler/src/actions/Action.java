@@ -10,10 +10,10 @@ public interface Action {
 	// returns true if cost is payable and paid.
 	public boolean payCost();
 
-	//do the action by having some effect on the opponent and/or threat
+	// do the action by having some effect on the opponent and/or threat
 	public void resolve(Threat t, Opponent o);
-	
-	//return the resource paying for the action
+
+	// return the resource paying for the action
 	public Resource getResource();
 
 }

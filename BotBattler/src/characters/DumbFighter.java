@@ -16,30 +16,39 @@ import game.Threat;
 //win any battles. You can do better!
 public class DumbFighter implements Character {
 
-	//Dumb, but not dumb enough to use more than 200 points of total resources!
-	
 	//hitPoints resource. Gotta have one!
-	private Resource hp = new Resource("HP", 180);
+	private Resource hp;
 	
 	//will use stamina to perform Block and Attack actions
-	private Resource stamina = new Resource("Stamina", 20);
+	private Resource stamina;
+	
+	public DumbFighter() {
+		//Dumb, but not dumb enough to use more than 200 points of total resources!
+		hp = new Resource("HP", 180);
+		stamina = new Resource("Stamina", 20);
+				
+	}
 
 	@Override
 	// This method returns the Dumb Fighter's name
 	public String toString() {
-
 		return "Dumb Fighter";
 	}
 
 	@Override
 	// this method returns the Resource object used as hit points.
+	// This is the resource that will be reduced by unblocked threat
+	//Dumb Fighter will die when he runs out of this resource.
 	public Resource getHitPointResource() {
 		return hp;
 	}
 
 	@Override
 	//this will return an Attack action if the total threat is less than 30.
-	//it will return a Block action in the UP direction otherwise.
+	//and will return a Block action in the UP direction otherwise.
+	//
+	//Dumb Fighter is too dumb to even look at the opponents hit points or vulnerability.
+	//
 	//Both actions use the stamina resource.
 	public Action takeTurn(Threat threatInfo, Opponent oppInfo) {
 		if (threatInfo.getTotalThreat() < 30)
