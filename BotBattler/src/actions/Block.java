@@ -4,11 +4,17 @@ import game.Opponent;
 import game.Resource;
 import game.Threat;
 
+//This class represents a physical block against the opponent.
+//It stops all the threat from two of the quadrants.
+//
+//The player can construct and return an Block object in their takeTurn() method
+//
+//The Block class *IS AN* Action class because it implements the Action interface.
 public class Block implements Action {
 
-	private Direction direction;
+	private Direction direction; //the direction UP, DOWN, LEFT, or RIGHT
 	private Resource res; // the resource used to pay the cost of the action
-	private int reduced; // the amount of threat this block blocked
+	private int reduced; // the amount of threat this block actually blocked
 
 	// Creates a Block action in the UP, DOWN, LEFT, or RIGHT direction, spending
 	// Resource r

@@ -4,6 +4,12 @@ import game.Opponent;
 import game.Resource;
 import game.Threat;
 
+
+//This class represents a physical attack against the opponent.
+//
+//The player can construct and return an Attack object in their takeTurn() method
+//
+//The Attack class *IS AN* Action class because it implements the Action interface.
 public class Attack implements Action {
 	private int numHits; // how many hits the attack will make
 	private Resource res; // The resource used to pay for the attack
@@ -33,7 +39,11 @@ public class Attack implements Action {
 	// each hit in an attack damages for 10 plus the opponent's physical
 	// vulnerability
 	public void resolve(Threat t, Opponent o) {
+		
+		//calculate the damage, accounting for the vulnerability and the number of hits
 		damage = numHits * (damage + o.getPhysicalVulnerablility());
+		
+		//call the opponent's takeDamage method!
 		o.takeDamage(damage);
 	}
 

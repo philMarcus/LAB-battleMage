@@ -35,7 +35,7 @@ public class BattleTester {
 		// ******************!!!************************
 		// Replace DumbFighter with your class to play!!!
 		// ******************!!!************************
-		SadMage player = new SadMage();
+		DumbFighter player = new DumbFighter();
 
 		// create a new battle object feat. player
 		Battle battle = new Battle(player);

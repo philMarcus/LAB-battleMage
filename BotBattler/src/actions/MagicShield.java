@@ -4,6 +4,12 @@ import game.Opponent;
 import game.Resource;
 import game.Threat;
 
+//This class represents a magical shield that absorbs the opponent's threat.
+//Each level of shield absorbs half of the remaining threat.
+//
+//The player can construct and return a MagicShield object in their takeTurn() method
+//
+//The MagicShield class *IS AN* Action class because it implements the Action interface.
 public class MagicShield implements Action {
 
 	private Resource res;// The resource used to pay for the attack

@@ -43,6 +43,8 @@ public class Battle {
 		opp = new Opponent();
 		currentThreat = new Threat();
 		playerHP = player.getHitPointResource();
+		
+		//player hit points count towards the 200 resources!
 		totalResources = playerHP.getMaxValue();
 
 		// A new battle will reset the Magic Blast counter.
@@ -59,8 +61,8 @@ public class Battle {
 		turnLog += player.toString() + " ";
 
 		// get the player's choice of action.
-		// this is when your decision-making method (it actually is AI) gets called.
-		// pass clones of the Threat and Opponent objects, so the player's class can't
+		// this is when your decision-making method actually gets called.
+		//we pass clones of the Threat and Opponent objects, so the player's class can't
 		// directly change the threat or remove hitpoints from the opponent
 		Action action = player.takeTurn(currentThreat.clone(), opp.clone());
 
