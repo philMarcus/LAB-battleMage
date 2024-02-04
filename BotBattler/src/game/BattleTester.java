@@ -2,6 +2,7 @@ package game;
 
 import characters.DumbFighter;
 import characters.GoodBlockerFighter;
+import characters.SadMage;
 import characters.TestFighter;
 
 // The game of battleMage is played by writing a Java class to
@@ -34,7 +35,7 @@ public class BattleTester {
 		// ******************!!!************************
 		// Replace DumbFighter with your class to play!!!
 		// ******************!!!************************
-		GoodBlockerFighter player = new GoodBlockerFighter();
+		SadMage player = new SadMage();
 
 		// create a new battle object feat. player
 		Battle battle = new Battle(player);

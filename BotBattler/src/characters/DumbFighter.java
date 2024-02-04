@@ -12,7 +12,9 @@ import game.Threat;
 //But he gets a D- for compiling && not being copied from another student!!1
 //
 //The strategy is to ...ATTACK EVERY TURN!!!
-//Dumbfighter loses 99% of the time. You can do better!
+//What is DumbFighter's win percentage?
+//It's not good, but it's not zero!
+//
 public class DumbFighter implements Character {
 
 	// hitPoints resource. Gotta have one!
@@ -29,9 +31,13 @@ public class DumbFighter implements Character {
 	}
 
 	@Override
-	// This method returns the Dumb Fighter's name
-	public String toString() {
-		return "Dumb Fighter";
+	// this will always return an Attack action, spending stamina.
+	//
+	// Dumb Fighter is too dumb to even care about Threat or the Opponent.
+	//
+	public Action takeTurn(Threat threatInfo, Opponent oppInfo) {
+		return new Attack(1, stamina);
+
 	}
 
 	@Override
@@ -43,13 +49,9 @@ public class DumbFighter implements Character {
 	}
 
 	@Override
-	// this will always return an Attack action, spending stamina.
-	//
-	// Dumb Fighter is too dumb to even care about Threat.
-	//
-	public Action takeTurn(Threat threatInfo, Opponent oppInfo) {
-		return new Attack(1, stamina);
-
+	// This method returns the Dumb Fighter's name
+	public String toString() {
+		return "Dumb Fighter";
 	}
 
 }

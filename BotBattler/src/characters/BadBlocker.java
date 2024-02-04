@@ -9,11 +9,11 @@ import game.Resource;
 import game.Threat;
 
 //This example class represents a fighter who is very bad at blocking. 
-//But he at least gets a D- for compiling && not being copied from another student!!1
+//But they at least get a D- for compiling && not being copied from another student!!1
 //
-//His strategy is to block upwards if the total threat is greater 
-//than 30, and to attack with a power of 1 otherwise. This fighter will win less
-//than one percent of battles. You can do better!
+//The strategy is to block upwards if the total threat is greater 
+//than 30, and to attack with a power of 1 otherwise. This fighter won't win many battles.
+//You can do better!
 //
 public class BadBlocker implements Character {
 
@@ -38,7 +38,7 @@ public class BadBlocker implements Character {
 	}
 
 	@Override
-	// this method returns the Resource object used as hit points.
+	// this method returns the Resource object to be used as hit points.
 	// This is the resource that will be reduced by unblocked threat
 	// Bad Blocker will die when he runs out of this resource.
 	public Resource getHitPointResource() {
@@ -50,7 +50,6 @@ public class BadBlocker implements Character {
 	// and will return a Block action in the UP direction otherwise.
 	//
 	// Bad blocker should look closer at Threat and learn to block. 
-	// Then Bad blocker should examine the Opponent and make better decisions.
 	//
 	// Both actions use the stamina resource.
 	public Action takeTurn(Threat threatInfo, Opponent oppInfo) {

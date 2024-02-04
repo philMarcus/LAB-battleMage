@@ -34,9 +34,9 @@ public class Battle {
 
 	// true if the player has won the battle;
 	private boolean playerWin = false;
-	
-	//input from the user, only used to press Enter between turns.
-    private Scanner input = new Scanner(System.in);
+
+	// input from the user, only used to press Enter between turns.
+	private Scanner input = new Scanner(System.in);
 
 	public Battle(Character p) {
 		player = p;
@@ -44,21 +44,22 @@ public class Battle {
 		currentThreat = new Threat();
 		playerHP = player.getHitPointResource();
 		totalResources = playerHP.getMaxValue();
-		
-		//A new battle will reset the Magic Blast counter.
+
+		// A new battle will reset the Magic Blast counter.
 		MagicBlast.resetUses();
 	}
 
-	//executes a turn of the battle. Returns a string containing the results of the turn.
+	// executes a turn of the battle. Returns a string containing the results of the
+	// turn.
 	public String playTurn() {
-		//turnLog stores a description of the turn
-		String turnLog = "Turn "+turn+" results:\n";
+		// turnLog stores a description of the turn
+		String turnLog = "Turn " + turn + " results:\n";
 		turnLog += currentThreat.toString();
-		turnLog += opp.toString()+"\n";
-		turnLog+=player.toString()+" "; 
-		
+		turnLog += opp.toString() + "\n";
+		turnLog += player.toString() + " ";
+
 		// get the player's choice of action.
-		//this is when your decision-making method (it actually is AI) gets called.
+		// this is when your decision-making method (it actually is AI) gets called.
 		// pass clones of the Threat and Opponent objects, so the player's class can't
 		// directly change the threat or remove hitpoints from the opponent
 		Action action = player.takeTurn(currentThreat.clone(), opp.clone());
@@ -80,9 +81,8 @@ public class Battle {
 		if (action.payCost()) {
 			action.resolve(currentThreat, opp);
 			turnLog += action.toString();
-		}
-		else
-			turnLog += "does nothing. Can't afford the "+res.getName()+".\n";
+		} else
+			turnLog += "does nothing. Can't afford the " + res.getName() + ".\n";
 
 		// if the opponent is out of HP, player wins!
 		if (!opp.isAlive()) {
@@ -91,41 +91,45 @@ public class Battle {
 			return turnLog += "The opponent has been defeated! Win.\n";
 		}
 
-		// player takes damage equal to remaining threat, 
-		//or, if not enough hp, takes damage equal to all remaining hp
-		int dmg = Math.min(currentThreat.getTotalThreat(),playerHP.getValue());
+		// player takes damage equal to remaining threat,
+		// or, if not enough hp, takes damage equal to all remaining hp
+		int dmg = Math.min(currentThreat.getTotalThreat(), playerHP.getValue());
 		playerHP.pay(dmg);
 
-		turnLog += player.toString()+" takes "+dmg+" damage. ";
+		turnLog += player.toString() + " takes " + dmg + " damage. ";
 		turnLog += playerHP.toString();
 
 		// If the player is out of hit points, it's over!
 		if (playerHP.getValue() <= 0) {
 			isOver = true;
-			turnLog += player.toString()+" dies. Lose.\n";
+			turnLog += player.toString() + " dies. Lose.\n";
 		}
-		//generate a new random threat and vulnerability
+		// generate a new random threat and vulnerability
 		currentThreat = new Threat();
 		opp.newVulnerability();
-		
+
 		return turnLog;
 	}
-	
-	//runs a battle. Loops over playTurn until the battle is over.
-	//will print a log to the console if print is true
-	//will wait for user to hit Enter between turns if dramaticPause is true.
-	//returns true for player victory, false for a loss
+
+	// runs a battle. Loops over playTurn until the battle is over.
+	// will print a log to the console if print is true
+	// will wait for user to hit Enter between turns if dramaticPause is true.
+	// returns true for player victory, false for a loss
 	public boolean doBattle(boolean print, boolean dramaticPause) {
-		
-		while(!isOver) {
-			//increase turn count
+
+		while (!isOver) {
+			// increase turn count
 			turn++;
-			//play the turn. store the log in string s.
+			
+			// play the turn. store the log in string s.
 			String s = playTurn();
-			if(print) System.out.println(s);
-			if(dramaticPause) input.nextLine();
+			
+			//print and wait for user to hit enter, if the methods parameters are "true"
+			if (print)
+				System.out.println(s);
+			if (dramaticPause)
+				input.nextLine();
 		}
-		
 		return playerWin;
 	}
 
