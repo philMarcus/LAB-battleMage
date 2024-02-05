@@ -12,7 +12,7 @@ import game.Threat;
 public class MagicBlast implements Action {
 	private Resource res; // the resource used to pay the cost of the action
 	private int damage; // the amount of damage this blast does
-	private int cost = 7; // the resource cost of performing the blast
+	private int cost = 10; // the resource cost of performing the blast
 
 	// keeps count of all magic blasts created. Static because it refers to the same
 	// number across
@@ -46,6 +46,7 @@ public class MagicBlast implements Action {
 		used++;
 	}
 
+	@Override
 	public Resource getResource() {
 		return res;
 	}
@@ -56,6 +57,7 @@ public class MagicBlast implements Action {
 		used = 0;
 	}
 
+	@Override
 	public String toString() {
 		return "casts Magic Blast for " + damage + " damage, at a cost of " + cost + ". " + res.toString();
 	}
