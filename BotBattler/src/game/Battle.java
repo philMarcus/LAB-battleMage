@@ -6,6 +6,9 @@ import actions.Action;
 import actions.MagicBlast;
 import characters.Character;
 
+
+//This class represents a single battle between the player's class
+//and the Opponent
 public class Battle {
 	// player is an instance of a class that implements the Character interface
 	private Character player;
