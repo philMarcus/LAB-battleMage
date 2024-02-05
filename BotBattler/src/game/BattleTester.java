@@ -3,24 +3,12 @@ package game;
 import characters.DumbFighter;
 import characters.BadBlocker;
 
-// The game of battleMage is played by writing a Java class to
-//implement the Character interface and then constructing an
-//instance of your character in the arena to see how many increasingly
-//tough opponents it can survive.
+//The game of battleMage is played by writing a Java class representing a Player Character
+//that can analyze an incoming threat and make a decision about what action to take.
 //
 //Designed for Revere High School AP CS A students who have completed through Unit 5 (writing classes)
 //
 //WHO WILL WRITE THE STRONGEST BATTLEMAGE?!?!?
-//
-//To implement the interface, just make sure of two things:
-//
-//1) your class header has "implements Character"
-//for example,  "public class YourClass implements Character {..."
-//and
-//2) Your class must contain the methods listed below, using the signatures exactly
-//as written here.
-//
-//Everything else is up to you!
 //
 //by Marcus
 //
