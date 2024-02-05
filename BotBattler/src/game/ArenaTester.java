@@ -7,11 +7,11 @@ import characters.SadMage;
 
 public class ArenaTester {
 	private static int wins;
-	private static int num = 100000;
+	private static int num = 1000000;
 
 	public static void main(String[] args) {
 		for (int i = 0; i < num; i++) {
-			DumbFighter player = new DumbFighter();
+			SadMage player = new SadMage();
 			Battle b = new Battle(player);
 			if (b.doBattle(false, false)) {
 				wins++;

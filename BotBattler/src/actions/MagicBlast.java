@@ -12,7 +12,8 @@ import game.Threat;
 public class MagicBlast implements Action {
 	private Resource res; // the resource used to pay the cost of the action
 	private int damage; // the amount of damage this blast does
-	private int cost = 10; // the resource cost of performing the blast
+	private int baseCost = 10; // the base resource cost of performing the blast
+	private int cost; //the final adjusted cost of the blast
 
 	// keeps count of all magic blasts created. Static because it refers to the same
 	// number across
@@ -30,7 +31,8 @@ public class MagicBlast implements Action {
 	//
 	// returns true if cost is payable and paid.
 	public boolean payCost() {
-		return res.pay(cost - used);
+		cost = baseCost-used;
+		return res.pay(cost);
 	}
 
 	@Override
