@@ -2,7 +2,7 @@ package game;
 
 import characters.BadBlocker;
 import characters.DumbFighter;
-import characters.GoodBlockerFighter;
+import characters.GoodBlocker;
 import characters.SadMage;
 
 public class ArenaTester {

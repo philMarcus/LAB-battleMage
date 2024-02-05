@@ -9,7 +9,7 @@ import game.Resource;
 import game.Threat;
 
 
-public class GoodBlockerFighter implements Character {
+public class GoodBlocker implements Character {
 
 
 	private Resource hp = new Resource("HP", 180);
