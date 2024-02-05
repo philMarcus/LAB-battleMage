@@ -1,9 +1,7 @@
 package game;
 
 import characters.DumbFighter;
-import characters.GoodBlockerFighter;
-import characters.SadMage;
-import characters.TestFighter;
+import characters.BadBlocker;
 
 // The game of battleMage is played by writing a Java class to
 //implement the Character interface and then constructing an
