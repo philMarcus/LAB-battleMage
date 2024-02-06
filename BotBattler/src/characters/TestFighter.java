@@ -78,9 +78,34 @@ public class TestFighter implements Character {
 		}
 
 	}
+	
+	//calculate the largest attack power that will keep
+	//a minimum remaining value of the resource
+	public static int affordAttack(Resource r, int minValue) {
+		//increases n until
+		for (int n=0;n<5;n++) {
+			//n is not affordable
+			if ((r.getValue()- minValue) < Math.pow(3,n)-2)
+				//and returns the last affordable n
+				return n-1;
+		}
+		return 0;
+	}
+	
+	//calculate the largest attack power that will keep
+	//a minimum remaining value of the resource
+	public static int affordShield(Resource r, int minValue) {
+		//increases n until
+		for (int n=0;n<9;n++) {
+			//n is not affordable
+			if ((r.getValue()- minValue) < Math.pow(2,n))
+				//and returns the last affordable n
+				return n-1;
+		}
+		return 0;
+	}	
 
 	@Override
-
 	public Action takeTurn(Threat threatInfo, Opponent oppInfo) {
 		// calculate calculable variables for analysis,
 		// the things we want to know to make a good decision.
