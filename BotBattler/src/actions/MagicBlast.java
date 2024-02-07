@@ -41,7 +41,7 @@ public class MagicBlast implements Action {
 	public void resolve(Threat t, Opponent o) {
 		// use math.ceil to always round up the damage to the nearest integer
 		// if the opponent has 1 hp, magic blast should finish them off!
-		damage = (int) Math.ceil(o.getHitPoints() / 3) + o.getMagicalVulnerablility();
+		damage = (int) Math.ceil(o.getHitPoints() / 3.0) + o.getMagicalVulnerablility();
 		o.takeDamage(damage);
 
 		// increment the static count of used Magic Blasts
