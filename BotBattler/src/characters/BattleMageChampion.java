@@ -24,6 +24,7 @@ public class BattleMageChampion implements Character {
 	// afford them
 	int usedMagicBlasts = 0;
 
+	//track actions used for statistical purposes
 	static int totalBlasts;
 	static int totalBlocks;
 	static int totalShields;

@@ -4,14 +4,16 @@ import characters.BadBlocker;
 import characters.DumbFighter;
 import characters.GoodBlocker;
 import characters.SadMage;
+import characters.BattleMageChampion;
+import characters.Blaster;
 
 public class ArenaTester {
 	private static int wins;
-	private static int num = 1000000;
+	private static int num = 100000;
 
 	public static void main(String[] args) {
 		for (int i = 0; i < num; i++) {
-			SadMage player = new SadMage();
+			BattleMageChampion player = new BattleMageChampion();
 			Battle b = new Battle(player);
 			if (b.doBattle(false, false)) {
 				wins++;
