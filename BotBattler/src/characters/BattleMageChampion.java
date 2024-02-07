@@ -15,8 +15,8 @@ import game.Threat;
 public class BattleMageChampion implements Character {
 
 	// We plan to use HP for all actions except blocks.
-	private Resource hp = new Resource("HP", 190);
-	private Resource stamina = new Resource("Stamina", 10);
+	private Resource hp = new Resource("HP", 197);
+	private Resource stamina = new Resource("Stamina", 3);
 
 	int blockableDmg; // the largest amount of dmg that could be blocked
 
@@ -66,6 +66,8 @@ public class BattleMageChampion implements Character {
 			aa.isBlast = true;
 			actions.add(aa);
 		}
+		
+		//find the highest-scoring action in the list
 		int maxIndex = 0;
 		for (AnalyzedAction a : actions) {
 			if (a.getScore() > actions.get(maxIndex).getScore())
