@@ -23,8 +23,15 @@ public class BattleMageChampion implements Character {
 	// We'll track how many blasts we've used so that we can determine if we can
 	// afford them
 	int usedMagicBlasts = 0;
-	
-	//our list of possible actions, with their outcome on our and opponent's HP
+
+	static int totalBlasts;
+	static int totalBlocks;
+	static int totalShields;
+	static int totalAttacks;
+	static int totalDefaults;
+	static boolean print = false; // whether to print action totals for statistical purposes
+
+	// our list of possible actions, with their outcome on our and opponent's HP
 	ArrayList<AnalyzedAction> actions;
 
 	@Override
@@ -45,20 +52,27 @@ public class BattleMageChampion implements Character {
 
 		actions = new ArrayList<AnalyzedAction>();
 		// add block analysis
-		if (canBlock(stamina, 0))
-			actions.add(new AnalyzedAction(new Block(dir, stamina), myHP, oppHP, myHP - unblockableDmg, oppHP));
+		if (canBlock(stamina, 0)) {
+			AnalyzedAction aa = new AnalyzedAction(new Block(dir, stamina), myHP, oppHP, myHP - unblockableDmg, oppHP);
+			aa.isBlock = true;
+			actions.add(aa);
+		}
 
 		// add shield analysis
 		for (int i = 1; i <= affordShield(hp, 1); i++) {
 			int unShieldedDmg = (int) (threatInfo.getTotalThreat() * Math.pow(0.5, i));
-			actions.add(new AnalyzedAction(new MagicShield(i, hp), myHP, oppHP,
-					myHP - unShieldedDmg - (int) Math.pow(2, i), oppHP));
+			AnalyzedAction aa = new AnalyzedAction(new MagicShield(i, hp), myHP, oppHP,
+					myHP - unShieldedDmg - (int) Math.pow(2, i), oppHP);
+			aa.isShield = true;
+			actions.add(aa);
 		}
 
 		// add attack analysis
 		for (int i = 1; i <= affordAttack(hp, 1); i++) {
-			actions.add(new AnalyzedAction(new Attack(i, hp), myHP, oppHP, myHP - threat - (int) Math.pow(3, i) + 2,
-					oppHP - i * dmgPerHit));
+			AnalyzedAction aa = new AnalyzedAction(new Attack(i, hp), myHP, oppHP,
+					myHP - threat - (int) Math.pow(3, i) + 2, oppHP - i * dmgPerHit);
+			aa.isAttack = true;
+			actions.add(aa);
 		}
 
 		// add blast analysis
@@ -68,8 +82,8 @@ public class BattleMageChampion implements Character {
 			aa.isBlast = true;
 			actions.add(aa);
 		}
-		
-		//find the highest-scoring action in the list
+
+		// find the highest-scoring action in the list
 		int maxIndex = 0;
 		for (AnalyzedAction a : actions) {
 			if (a.getScore() > actions.get(maxIndex).getScore())
@@ -77,11 +91,28 @@ public class BattleMageChampion implements Character {
 		}
 
 		if (actions.size() > 0) {
-			if (actions.get(maxIndex).isBlast)
+			if (actions.get(maxIndex).isBlast) {
 				usedMagicBlasts++;
+				totalBlasts++;
+			}
 
+			if (actions.get(maxIndex).isShield)
+				totalShields++;
+
+			if (actions.get(maxIndex).isBlock)
+				totalBlocks++;
+
+			if (actions.get(maxIndex).isAttack)
+				totalAttacks++;
+			if (print) {
+				System.out.println("\nBlasts: " + totalBlasts + "\nShields: " + totalShields + "\nAttacks: "
+						+ totalAttacks + "\nBlocks: " + totalBlocks + "\nDefaults: " + totalDefaults);
+				System.out.println("\nTotal Actions: "
+						+ (totalBlasts + totalBlocks + totalShields + totalAttacks + totalDefaults));
+			}
 			return actions.get(maxIndex).getA();
 		}
+		totalDefaults++;
 		return new Attack(1, hp);
 	}
 
@@ -93,7 +124,7 @@ public class BattleMageChampion implements Character {
 			// n is not affordable
 			if ((r.getValue() - minValue) < Math.pow(3, n) - 2)
 				// and returns the last affordable n
-				return n-1;
+				return n - 1;
 		}
 		return 0;
 	}
@@ -201,6 +232,11 @@ class AnalyzedAction {
 	int of; // opponent's hp after this action
 
 	public boolean isBlast; // flag for blast to enable counter
+
+	// keep track of total uses for (statistical purposes only)
+	public boolean isBlock;
+	public boolean isAttack;
+	public boolean isShield;
 
 	public AnalyzedAction(Action a, int pi, int oi, int pf, int of) {
 		this.a = a;
