@@ -23,6 +23,8 @@ public class BattleMageChampion implements Character {
 	// We'll track how many blasts we've used so that we can determine if we can
 	// afford them
 	int usedMagicBlasts = 0;
+	
+	//our list of possible actions, with their outcome on our and opponent's HP
 	ArrayList<AnalyzedAction> actions;
 
 	@Override
