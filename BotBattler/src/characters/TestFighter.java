@@ -16,7 +16,10 @@ public class TestFighter implements Character {
 	Direction dir; // the best direction to block
 	int blockableDmg; // the largest amount of dmg that could be blocked
 	int unblockableDmg; // damage remaining after best block
-	int dmgPerHit; // the amount of damage I'll do, considering vulnerabiltiy
+	int dmgPerHit; // the amount of damage I'll do, considering vulnerability
+	
+	//We'll track how many blasts we've used so that we can determine if we can afford them
+	int usedMagicBlasts =0;
 
 
 
@@ -103,7 +106,19 @@ public class TestFighter implements Character {
 				return n-1;
 		}
 		return 0;
-	}	
+	}
+	
+	//determine if the Magic Blast is can be afforded with a minimum
+	//value of the resource remaining.
+	public boolean canAffordBlast(Resource r, int minValue) {
+		return(r.getValue()-minValue >= 10 - usedMagicBlasts);
+	}
+	
+	//determines if we can block and have a minimum value of the resource remaining
+	public static boolean canBlock(Resource r, int minValue) {
+		//must have 20 or less of the resource as well as being able to afford the cost of 1.
+		return ((r.getValue() <= 20)&&(r.getValue()-minValue >= 1));
+	}
 
 	@Override
 	public Action takeTurn(Threat threatInfo, Opponent oppInfo) {
@@ -133,4 +148,32 @@ public class TestFighter implements Character {
 		return "Mr. Marcus";
 	}
 
+}
+//this class stores an action, along with values to calculate it's
+//delta-ratio
+class analyzedAction{
+
+
+	Action a; 
+	int pi; //player's current hp
+	int oi; //opponent's current hp
+	int pf; //players hp after this action
+	int of; //opponent's hp after this action.
+	
+	public analyzedAction(Action a, int pi, int oi, int pf, int of) {
+		this.a = a;
+		this.pi = pi;
+		this.oi = oi;
+		this.pf = pf;
+		this.of = of;
+	}
+
+
+	
+	int getScore() {
+		//equivalent to the change in ratio of your to opp's HP as a result
+		//of this action. Want to maximize.
+		return pf*oi-pi*of;
+	}
+	
 }
