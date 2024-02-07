@@ -85,11 +85,11 @@ public class BattleMageChampion implements Character {
 	// a minimum remaining value of the resource
 	public static int affordAttack(Resource r, int minValue) {
 		// increases n until
-		for (int n = 0; n < 5; n++) {
+		for (int n = 0; n < 6; n++) {
 			// n is not affordable
 			if ((r.getValue() - minValue) < Math.pow(3, n) - 2)
 				// and returns the last affordable n
-				return n - 1;
+				return n-1;
 		}
 		return 0;
 	}
