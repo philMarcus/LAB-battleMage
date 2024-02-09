@@ -58,6 +58,12 @@ public class BattleMageChampion implements Character {
 			aa.isBlock = true;
 			actions.add(aa);
 		}
+		//there's a slight possiblity to want to block with HP
+		if (canBlock(hp, 1)) {
+			AnalyzedAction aa = new AnalyzedAction(new Block(dir, hp), myHP, oppHP, myHP - unblockableDmg, oppHP);
+			aa.isBlock = true;
+			actions.add(aa);
+		}
 
 		// add shield analysis
 		for (int i = 1; i <= affordShield(hp, 1); i++) {
@@ -69,19 +75,32 @@ public class BattleMageChampion implements Character {
 		}
 
 		// add attack analysis
-		for (int i = 1; i <= affordAttack(hp, 1); i++) {
+		for (int i = 1; i <= affordAttack(hp, 0); i++) {
 			AnalyzedAction aa = new AnalyzedAction(new Attack(i, hp), myHP, oppHP,
 					myHP - threat - (int) Math.pow(3, i) + 2, oppHP - i * dmgPerHit);
 			aa.isAttack = true;
-			actions.add(aa);
+			
+			//check for death blow & return this action if will kill the opponent
+			if(oppHP-i*dmgPerHit<=0)
+				return aa.getA();
+			
+			//add to list only if we can survive it. 
+			if(i <= affordAttack(hp, 1))
+				actions.add(aa);
 		}
 
 		// add blast analysis
-		if (canAffordBlast(hp, 1)) {
+		if (canAffordBlast(hp, 0)) {
 			AnalyzedAction aa = new AnalyzedAction(new MagicBlast(hp), myHP, oppHP,
 					myHP - threat - 10 + usedMagicBlasts, oppHP - dmgPerBlast);
 			aa.isBlast = true;
-			actions.add(aa);
+			
+			//check for death blow & return this action if will kill the opponent
+			if(oppHP-dmgPerBlast<=0)
+				return aa.getA();
+			//add to list only if we can survive it. 
+			if(canAffordBlast(hp,1))
+				actions.add(aa);
 		}
 
 		// find the highest-scoring action in the list
@@ -130,7 +149,7 @@ public class BattleMageChampion implements Character {
 		return 0;
 	}
 
-	// calculate the largest attack power that will keep
+	// calculate the largest shield power that will keep
 	// a minimum remaining value of the resource
 	public static int affordShield(Resource r, int minValue) {
 		// increases n until
