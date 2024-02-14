@@ -26,14 +26,21 @@ public class Threat implements Cloneable {
 	// When there's "spike" threat, this is how many extra dice to roll
 	private final int spikeDice = 8;
 
-	public Threat() {
+	// every x levels, increase the sides of the threat die.
+	private final int threatIncreaseFrequency = 5;
+
+	private int level;
+
+	public Threat(int level) {
+
+		this.level = level;
 
 		// There are always four quadrants, so a size four array will store the threat.
 		vals = new int[4];
 
 		// roll a die for the threat in each quadrant
 		for (int i = 0; i < 4; i++) {
-			vals[i] = rollDie(baseThreat);
+			vals[i] = rollDie(baseThreat + (level / threatIncreaseFrequency));
 		}
 
 		// Sometimes, a quadrant will have extra "spike" threat.
@@ -41,7 +48,7 @@ public class Threat implements Cloneable {
 			// choose a random quadrant
 			int q = rollDie(4);
 			// add spike threat to that quadrant
-			vals[q - 1] += rollDice(baseThreat, spikeDice);
+			vals[q - 1] += rollDice(baseThreat + (level / threatIncreaseFrequency), spikeDice);
 		}
 
 	}
@@ -112,7 +119,7 @@ public class Threat implements Cloneable {
 		try {
 			return (Threat) super.clone();
 		} catch (CloneNotSupportedException e) {
-			return new Threat();
+			return new Threat(1);
 		}
 	}
 

@@ -15,6 +15,9 @@ public class Battle {
 
 	// The Opponent the player is battling
 	private Opponent opp;
+	
+	//the level of the threat/opponent
+	private int level;
 
 	// The threat, by quadrant, that the player is facing
 	private Threat currentThreat;
@@ -41,10 +44,11 @@ public class Battle {
 	// input from the user, only used to press Enter between turns.
 	private Scanner input = new Scanner(System.in);
 
-	public Battle(Character p) {
+	public Battle(Character p, int level) {
+		this.level = level;
 		player = p;
-		opp = new Opponent();
-		currentThreat = new Threat();
+		opp = new Opponent(level);
+		currentThreat = new Threat(level);
 		playerHP = player.getHitPointResource();
 		
 		//player hit points count towards the 200 resources!
@@ -110,7 +114,7 @@ public class Battle {
 			turnLog += player.toString() + " dies. Lose.\n";
 		}
 		// generate a new random threat and vulnerability
-		currentThreat = new Threat();
+		currentThreat = new Threat(level);
 		opp.newVulnerability();
 
 		return turnLog;

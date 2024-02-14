@@ -30,7 +30,7 @@ public class BattleMageChampion implements Character {
 	static int totalShields;
 	static int totalAttacks;
 	static int totalDefaults;
-	static boolean print = false; // whether to print action totals for statistical purposes
+	static boolean print = true; // whether to print action totals for statistical purposes
 
 	// our list of possible actions, with their outcome on our and opponent's HP
 	ArrayList<AnalyzedAction> actions;

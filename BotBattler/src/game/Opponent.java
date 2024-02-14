@@ -25,6 +25,13 @@ public class Opponent implements Cloneable {
 		hitPoints = maxHP;
 		newVulnerability();
 	}
+	
+	public Opponent(int level) {
+		level = level;
+		//opponent gains one HP per level after 1.
+		hitPoints = maxHP + level - 1;
+		newVulnerability();
+	}
 
 	public void newVulnerability() {
 		// roll an x-sided die. Subtract 1 (so vulnerability can be zero).
