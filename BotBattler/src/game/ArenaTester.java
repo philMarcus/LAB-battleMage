@@ -3,7 +3,6 @@ package game;
 import characters.BadBlocker;
 import characters.DumbFighter;
 import characters.GoodBlocker;
-import characters.Harrison;
 import characters.SadMage;
 import characters.BattleMageChampion;
 import characters.Blaster;
