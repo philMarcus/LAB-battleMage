@@ -27,7 +27,7 @@ public class BattleTester {
 		BattleMageChampion player = new BattleMageChampion();
 
 		// create a new battle object feat. player
-		Battle battle = new Battle(player,1);
+		Battle battle = new Battle(player,30);
 
 		// do the battle, printing turn logs, and waiting for the user to hit Enter
 		// between turns

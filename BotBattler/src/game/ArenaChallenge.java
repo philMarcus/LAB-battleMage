@@ -19,7 +19,7 @@ public class ArenaChallenge {
 		int level = 1;
 		boolean isOver = false;
 		while (!isOver) {
-			Harrison player = new Harrison();
+			BattleMageChampion player = new BattleMageChampion();
 			Battle b = new Battle(player, level);
 			if (b.doBattle(false, false))
 				level++;

@@ -17,7 +17,6 @@ public class Opponent implements Cloneable {
 
 	// the level of the opponent: higher level will have bigger threat
 	// and/or more hit points
-	// TODO increase difficulty with level
 	private int level;
 
 	public Opponent() {
@@ -27,7 +26,7 @@ public class Opponent implements Cloneable {
 	}
 	
 	public Opponent(int level) {
-		level = level;
+		this.level = level;
 		//opponent gains one HP per level after 1.
 		hitPoints = maxHP + level - 1;
 		newVulnerability();

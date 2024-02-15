@@ -29,6 +29,7 @@ public class Threat implements Cloneable {
 	// every x levels, increase the sides of the threat die.
 	private final int threatIncreaseFrequency = 5;
 
+	//the level of the threat.
 	private int level;
 
 	public Threat(int level) {
@@ -95,6 +96,10 @@ public class Threat implements Cloneable {
 			vals[q[i] - 1] *= pct;
 		}
 		return initialThreat - getTotalThreat(); // the amount removed is the initial threat minus the current threat
+	}
+
+	public int getLevel() {
+		return level;
 	}
 
 	@Override
