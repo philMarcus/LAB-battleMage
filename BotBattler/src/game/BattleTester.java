@@ -24,7 +24,7 @@ public class BattleTester {
 		DumbFighter player = new DumbFighter();
 
 		// create a new battle object feat. player
-		Battle battle = new Battle(player);
+		Battle battle = new Battle(player,1);
 
 		// do the battle, printing turn logs, and waiting for the user to hit Enter
 		// between turns
