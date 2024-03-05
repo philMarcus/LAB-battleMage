@@ -32,6 +32,7 @@ public class Threat implements Cloneable {
 	//the level of the threat.
 	private int level;
 
+	//constructor for a new random threat of a given level
 	public Threat(int level) {
 
 		this.level = level;
@@ -53,6 +54,8 @@ public class Threat implements Cloneable {
 		}
 
 	}
+	
+	
 
 	// rolls an x-sided die
 	// returns a random int between 1 and sides
