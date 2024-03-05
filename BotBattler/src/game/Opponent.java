@@ -4,7 +4,7 @@ package game;
 //the player's character class will probably want to use information
 //like the opponents hit points, level, and physical/magical vulnerability when deciding
 //which action to choose.
-public class Opponent implements Cloneable {
+public class Opponent{
 
 	private int hitPoints;
 	private int maxHP = 100; // opponent's starting hit points (at level 1)
@@ -25,11 +25,20 @@ public class Opponent implements Cloneable {
 		newVulnerability();
 	}
 	
+	//constructor to make an opponent at a given level
 	public Opponent(int level) {
 		this.level = level;
 		//opponent gains one HP per level after 1.
 		hitPoints = maxHP + level - 1;
 		newVulnerability();
+	}
+	
+	//constructor to make a cloned opponent
+	public Opponent(Opponent toClone) {
+		this.level = toClone.level;
+		this.hitPoints = toClone.getHitPoints();
+		this.vulnerability = toClone.getPhysicalVulnerablility();
+		
 	}
 
 	public void newVulnerability() {
@@ -101,19 +110,5 @@ public class Opponent implements Cloneable {
 		return s;
 	}
 
-	@Override
-	// The clone method comes from the Object class and allows us to clone an
-	// Opponent
-	// We want to clone the opponent so that the character class has all the info
-	// about
-	// the real opponent, but can't directly change it. Don't worry about this
-	// method at all.
-	protected Opponent clone() {
-		try {
-			return (Opponent) super.clone();
-		} catch (CloneNotSupportedException e) {
-			return new Opponent();
-		}
-	}
 
 }
