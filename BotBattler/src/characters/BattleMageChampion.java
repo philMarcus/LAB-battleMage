@@ -15,8 +15,8 @@ import game.Threat;
 public class BattleMageChampion implements Character {
 
 	// We plan to use HP for all actions except blocks.
-	private Resource hp = new Resource("HP", 197);
-	private Resource stamina = new Resource("Stamina", 3);
+	private Resource hp = new Resource("HP", 195);
+	private Resource stamina = new Resource("Stamina", 5);
 
 	int blockableDmg; // the largest amount of dmg that could be blocked
 
