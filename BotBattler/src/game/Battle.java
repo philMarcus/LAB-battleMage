@@ -71,8 +71,9 @@ public class Battle {
 		// this is when your decision-making method actually gets called.
 		//we pass clones of the Threat and Opponent objects, so the player's class can't
 		// directly change the threat or remove hitpoints from the opponent
-		Action action = player.takeTurn(currentThreat.clone(), opp.clone());
+		Action action = player.takeTurn(new Threat(currentThreat), new Opponent(opp));
 
+		
 		// before we pay the action's cost and resolve the action, cheater check:
 		// if we haven't spent this resource before, (and it's not the player's HP),
 		// add it's maxValue to total resources. This is so we can check that the player

@@ -10,8 +10,7 @@ package game;
 //If the player's action doesn't block or reduce the threat, the player will take the total
 //damage from all quadrants.
 //
-//"implements Cloneable" helps prevent cheating. 
-public class Threat implements Cloneable {
+public class Threat {
 
 	// array containing incoming damage for each quadrant
 	private int[] vals;
@@ -32,6 +31,7 @@ public class Threat implements Cloneable {
 	//the level of the threat.
 	private int level;
 
+	//constructor for threat of a given level
 	public Threat(int level) {
 
 		this.level = level;
@@ -53,6 +53,17 @@ public class Threat implements Cloneable {
 		}
 
 	}
+	
+	//constructor for cloned threat
+	public Threat(Threat toClone) {
+		this.level = toClone.level;
+		vals = new int[4];
+		for(int i=0;i<4;i++) {
+			this.vals[i] = toClone.getQuadrantThreat(i+1);
+		}
+	}
+	
+	
 
 	// rolls an x-sided die
 	// returns a random int between 1 and sides
@@ -114,18 +125,5 @@ public class Threat implements Cloneable {
 		return s;
 	}
 
-	@Override
-	// The clone method comes from the Object class and allows us to clone a Threat
-	// We want to clone the threat so that the player's class has all the info
-	// about
-	// the real threat, but can't directly change it. Don't worry about this method
-	// at all.
-	protected Threat clone() {
-		try {
-			return (Threat) super.clone();
-		} catch (CloneNotSupportedException e) {
-			return new Threat(1);
-		}
-	}
 
 }
