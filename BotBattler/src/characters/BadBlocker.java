@@ -32,9 +32,18 @@ public class BadBlocker implements Character {
 	}
 
 	@Override
-	// This method returns Bad Blocker's name
-	public String toString() {
-		return "Bad Blocker";
+	// this will return an Attack action if the total threat is less than 30.
+	// and will return a Block action in the UP direction otherwise.
+	//
+	// Bad blocker should look closer at Threat and learn to block.
+	//
+	// Both actions use the stamina resource.
+	public Action takeTurn(Threat threatInfo, Opponent oppInfo) {
+		if (threatInfo.getTotalThreat() < 30)
+			return new Attack(1, stamina);
+
+		return new Block(Direction.UP, stamina);
+
 	}
 
 	@Override
@@ -46,18 +55,9 @@ public class BadBlocker implements Character {
 	}
 
 	@Override
-	// this will return an Attack action if the total threat is less than 30.
-	// and will return a Block action in the UP direction otherwise.
-	//
-	// Bad blocker should look closer at Threat and learn to block. 
-	//
-	// Both actions use the stamina resource.
-	public Action takeTurn(Threat threatInfo, Opponent oppInfo) {
-		if (threatInfo.getTotalThreat() < 30)
-			return new Attack(1, stamina);
-
-		return new Block(Direction.UP, stamina);
-
+	// This method returns Bad Blocker's name
+	public String toString() {
+		return "Bad Blocker";
 	}
 
 }

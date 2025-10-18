@@ -18,12 +18,7 @@ public class Opponent{
 	// the level of the opponent: higher level will have bigger threat
 	// and/or more hit points
 	private int level;
-
-	public Opponent() {
-		level = 1;
-		hitPoints = maxHP;
-		newVulnerability();
-	}
+	
 	
 	//constructor to make an opponent at a given level
 	public Opponent(int level) {
