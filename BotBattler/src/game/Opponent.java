@@ -19,7 +19,8 @@ public class Opponent{
 	// and/or more hit points
 	private int level;
 	
-	//constructor for an opponent of a given level
+	
+	//constructor to make an opponent at a given level
 	public Opponent(int level) {
 		this.level = level;
 		//opponent gains one HP per level after 1.

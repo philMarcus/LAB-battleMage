@@ -31,7 +31,7 @@ public class Threat {
 	//the level of the threat.
 	private int level;
 
-	//constructor for threat of a given level
+	//constructor for a new random threat of a given level
 	public Threat(int level) {
 
 		this.level = level;
